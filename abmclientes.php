@@ -33,20 +33,22 @@
         $tel=$_POST["txtTel"];
         $correo=$_POST["txtCorreo"];
         $archivo1=["archivo1"];
+        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+        $nombreImagen = $nombreArchivo . "." . $extension;
 
         if($_FILES["archivo1"]["error"] === UPLOAD_ERR_OK){
             $nombreAleatorio=date("Ymdhsi");
-            $archivo_tmp= $_FILES["archivo1"]["tmp_name"];
-            $nombreArchivo= $_FILES["archivo1"]["name"];
-            $extension= pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-            $nombreImagen=$nombreArchivo . "." . $extension;
+            $archivo_tmp = $_FILES["archivo1"]["tmp_name"];
+            $nombreArchivo = $_FILES["archivo1"]["name"];
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+            $nombreImagen = $nombreArchivo . "." . $extension;
             move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
         }
-        if ($nombreImagen !="" && $aClientes[$id]["archivo1"] !=""){
+        if ($nombreImagen != "" && $aClientes[$id]["archivo1"] !=""){
             unlink("imagenes/".$aClientes[$_GET["id"]]["archivo1"]);
         }
-        if($nombreImagen ==""){
-            $nombreImagen=$aClientes[$_GET["id"]]["archivo1"];
+        if($nombreImagen == ""){
+            $nombreImagen = $aClientes[$_GET["id"]]["archivo1"];
         }
 
         if(isset($_GET["id"]) && $_GET["id"] >= 0){
@@ -107,7 +109,7 @@
                             <label for="txtCorreo">Correo:</label><br>
                             <input type="email" name="txtCorreo" id="txtCorreo" class="form-control" required value ="<?php echo isset ($_GET["id"]) && isset($aClientes[$_GET["id"]])? $aClientes[$_GET["id"]]["txtCorreo"] : ""; ?>">
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <input type="file" name="archivo1" id="archivo1" class="mb-2" accept="jpg,jpeg,png"><br>
                         </div>
                         <div>
@@ -134,16 +136,18 @@
                                     <td> <?php echo $cliente["txtNombre"];?> </td>
                                     <td> <?php echo $cliente["txtCorreo"];?> </td>
                                     <td style="widht: 110 px;">  
-                                        <a href="abmclientes.php?id=<?php echo $pos?>"><i class="fas fa-edit"></i></a>
-                                        <a href="abmclientes.php?id=<?php echo $pos?>&do=eliminar"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="abmclientes.php?id=<?php echo $pos?>"><i class="fas fa-edit btn btn-sm btn-info"></i></a>
+                                        <a href="abmclientes.php?id=<?php echo $pos?>&do=eliminar"><i class="fas fa-trash-alt btn btn-sm btn-danger"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?> 
                         </tbody>
                     </table>
-                    <a href="abmclientes.php" class="mas"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
+        </div>
+        <div class="container text-right">
+            <a href="abmclientes.php" class="mas"><i class="fas fa-user-plus btn btn-sm btn-primary"></i></a>
         </div>
     </main>
 </body>

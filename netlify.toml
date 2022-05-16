@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/ABM-Clientes.php"
+  to = "/abmclientes.php"
   status = 200

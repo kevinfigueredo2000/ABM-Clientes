@@ -121,11 +121,11 @@
                     <table class="table table-hover border">
                         <thead>
                             <tr>
-                                <td>Imagen</td>
-                                <td>DNI</td>
-                                <td>Nombre</td>
-                                <td>Correo</td>
-                                <td>Acciones</td>
+                                <td class="font-weight-bold">Imagen</td>
+                                <td class="font-weight-bold">DNI</td>
+                                <td class="font-weight-bold">Nombre</td>
+                                <td class="font-weight-bold">Correo</td>
+                                <td class="font-weight-bold">Acciones</td>
                             </tr>
                         </thead>
                         <tbody>

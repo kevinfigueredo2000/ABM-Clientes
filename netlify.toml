@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/ABM-Clientes.php"
+  status = 200
